@@ -1,0 +1,95 @@
+﻿@model IEnumerable<SomeTests.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SNM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject_title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lecture_hourse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Practices_hourse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Laboratory_hourse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Semestry_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Semestr)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SNM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject_title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lecture_hourse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Practices_hourse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Laboratory_hourse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semestry_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semestr)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -9,19 +9,19 @@ using SomeTests.Services;
 
 namespace SomeTests.Controllers
 {
-    public class SalesController : Controller
+    public class StudentsController : Controller
     {
-        private readonly SaleService saleService;
+        private readonly StudentService studentService;
 
-        public SalesController(SaleService saleService)
+        public StudentsController(StudentService studentService)
         {
-            this.saleService = saleService;
+            this.studentService = studentService;
         }
 
         // GET: Cars
         public ActionResult Index()
         {
-            return View(saleService.Get());
+            return View(studentService.Get());
         }
 
         public ActionResult Details(string id)
@@ -31,12 +31,12 @@ namespace SomeTests.Controllers
                 return NotFound();
             }
 
-            var sale = saleService.Get(id);
-            if (sale == null)
+            var student = studentService.Get(id);
+            if (student == null)
             {
                 return NotFound();
             }
-            return View(sale);
+            return View(student);
         }
 
         public ActionResult Create()
@@ -46,14 +46,14 @@ namespace SomeTests.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Sale sale)
+        public IActionResult Create(Student student)
         {
             if (ModelState.IsValid)
             {
-                saleService.Create(sale);
+                studentService.Create(student);
                 return RedirectToAction(nameof(Index));
             }
-            return View(sale);
+            return View(student);
         }
 
         public ActionResult Edit(string id)
@@ -63,31 +63,31 @@ namespace SomeTests.Controllers
                 return NotFound();
             }
 
-            var sale = saleService.Get(id);
-            if (sale == null)
+            var student = studentService.Get(id);
+            if (student == null)
             {
                 return NotFound();
             }
-            return View(sale);
+            return View(student);
         }
 
         // POST: Cars/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(string id, Sale sale)
+        public ActionResult Edit(string id, Student student)
         {
-            if (id != sale.Id)
+            if (id != student.Id)
             {
                 return NotFound();
             }
             if (ModelState.IsValid)
             {
-                saleService.Update(id, sale);
+                studentService.Update(id, student);
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                return View(sale);
+                return View(student);
             }
         }
 
@@ -99,12 +99,12 @@ namespace SomeTests.Controllers
                 return NotFound();
             }
 
-            var sale = saleService.Get(id);
-            if (sale == null)
+            var student = studentService.Get(id);
+            if (student == null)
             {
                 return NotFound();
             }
-            return View(sale);
+            return View(student);
         }
 
         // POST: Cars/Delete/5
@@ -114,14 +114,14 @@ namespace SomeTests.Controllers
         {
             try
             {
-                var sale = saleService.Get(id);
+                var student = studentService.Get(id);
 
-                if (sale == null)
+                if (student == null)
                 {
                     return NotFound();
                 }
 
-                saleService.Remove(sale.Id);
+                studentService.Remove(student.Id);
 
                 return RedirectToAction(nameof(Index));
             }

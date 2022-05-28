@@ -22,7 +22,7 @@ namespace SomeTests
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddHttpContextAccessor();
-            services.AddScoped<SaleService>();
+            services.AddScoped<StudentService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
